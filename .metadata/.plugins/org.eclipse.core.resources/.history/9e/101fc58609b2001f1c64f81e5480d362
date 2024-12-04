@@ -1,0 +1,18 @@
+package org.sist.sb01_jsp.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import lombok.extern.java.Log;
+
+@Controller
+@Log
+public class IndexController {
+	
+	@GetMapping("/index")
+	public String index() {
+		return "hello world~";
+	}
+	
+	
+} // class

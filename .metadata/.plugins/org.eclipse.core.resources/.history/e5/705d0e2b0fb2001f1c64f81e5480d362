@@ -1,0 +1,6 @@
+[수업내용정리]
+[스프링 부트 프로젝트 생성]
+ㄴ 폴더 생성
+ㄴ sb01_jsp 프로젝트명
+new - spring starter project - name : 프로젝트명 - 
+Type : Maven - Group : org.sist - Package : org.sist.sb01_jsp (패키지명은 소문자)

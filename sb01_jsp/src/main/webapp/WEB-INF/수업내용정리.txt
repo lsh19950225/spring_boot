@@ -1,0 +1,41 @@
+[수업내용정리]
+[스프링 부트 개발 환경]
+1. Spring.io
+
+https://spring.io/tools
+
+Spring Tools 4 for Eclipse
+4.26.0 - windows x86_64 다운로드 - 압축 풀어서
+
+2. 롬복 설치
+
+3. JDK 17 다운로드 - 설치
+
+[스프링 부트 프로젝트 생성]
+ㄴ 폴더 생성
+ㄴ sb01_jsp 프로젝트명
+new - spring starter project - name : 프로젝트명 - 
+Type : Maven - Group : org.sist - Package : org.sist.sb01_jsp (패키지명은 소문자)
+
+next
+--
+* selected
+lombok
+oracle driver
+spring web
+mybatis framework
+spring boot devtools
+
+next
+--
+finish
+--
+
+src/main/resources 패키지
+	ㄴ static 정적 페이지 ( css, js )
+	ㄴ templates 템플릿 폴더
+	application.properties 파일 : 애플리케이션의 환경설정 파일
+	
+	http://localhost/index 요청 url -> index.jsp 응답
+	
+	org.sist.sb01_jsp.프로젝트명+Application.java + main(){} : 웹 애플리케이션을 실행하는 파일
