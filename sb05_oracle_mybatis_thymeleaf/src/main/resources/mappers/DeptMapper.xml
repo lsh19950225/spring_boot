@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.sist.sb05_oracle_mybatis_thymeleaf.persistence.DeptMapper"><!-- 패키지들이랑 interface 이름 -->
+	
+	<!--List<DeptVO> getDeptList() throws Exception;-->
+	<select id="getDeptList" resultType="org.sist.sb05_oracle_mybatis_thymeleaf.domain.DeptVO"><!-- id는 interface의 method 이름, 이 안에 ; 금지 return type이 result type -->
+		select *
+		from dept
+	</select>
+	
+</mapper>

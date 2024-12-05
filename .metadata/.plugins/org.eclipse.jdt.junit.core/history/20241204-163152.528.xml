@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="Sb02MybatisApplicationTests" project="sb02_mybatis" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="org.sist.sb02_mybatis.Sb02MybatisApplicationTests" time="0.757" displayname="Sb02MybatisApplicationTests" uniqueid="[engine:junit-jupiter]/[class:org.sist.sb02_mybatis.Sb02MybatisApplicationTests]">
-    <testcase name="timeMapperTest" classname="org.sist.sb02_mybatis.Sb02MybatisApplicationTests" time="0.757" displayname="timeMapperTest()" uniqueid="[engine:junit-jupiter]/[class:org.sist.sb02_mybatis.Sb02MybatisApplicationTests]/[method:timeMapperTest()]"/>
-  </testsuite>
-</testrun>
