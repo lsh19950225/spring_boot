@@ -6,7 +6,7 @@ import org.sist.sb06_sbb2.answer.Answer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
+																						// 					pk 타입
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
 	
 	// CRUD 메서드 이미 내장
