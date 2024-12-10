@@ -2,6 +2,7 @@ package org.sist.sb06_sbb3.question;
 
 import java.util.List;
 
+import org.sist.sb06_sbb3.answer.AnswerForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -44,7 +45,8 @@ public class QuestionController {
 	// question/detail/2
 	@GetMapping("/detail/{id}")
 	public String detail(@PathVariable("id") Integer id
-			, Model model) {
+			, Model model
+			, AnswerForm answerForm) {
 		Question question = this.questionService.getQuestion(id);
 		model.addAttribute("question", question);
 		return "/question/detail";
@@ -52,7 +54,7 @@ public class QuestionController {
 	
 	// 질문 등록하기
 	@GetMapping("/create")
-	public void questionCreate( QuestionForm questionForm ) { // QuestionForm form 넣어줘야 오류 안뜬다.
+	public void questionCreate( QuestionForm questionForm ) { // QuestionForm questionForm 넣어줘야 오류 안뜬다.
 		
 	} //
 	

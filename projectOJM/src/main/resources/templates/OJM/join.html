@@ -1,0 +1,550 @@
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{/OJM/header}">
+<div layout:fragment="content">
+<div class="memberJoin-container">
+		<div id="memberJoin-container-contents">
+			<div class="table-container">
+				<div class="layout-fix">
+					<form action="/join2.htm" id="joinForm" name="joinForm" method="post" target="_self">
+						<!-- 대량의 hidden 인풋으로 email-auth-use 같은 것들을 가져가는데 일단 생략 중복 체크하나? -->
+						<div class="memberJoin-wrap">
+
+							<div class="innerJoinWrap">
+								<div class="innerJoin">
+									<h2 class="mem_joinTitle">회원가입</h2>
+
+									
+									
+
+								</div>
+								<!-- innerJoin -->
+							</div>
+							<!-- memberJoin-innerWrap -->
+							<div class="innerJoinWrap2nd">
+
+								<div class="innerJoin2nd">
+									<div class="innerJoin2ndbox">
+										<table class="formTable">
+											<colgroup>
+												<col style="width: 150px;">
+												<col style="width: auto;">
+											</colgroup>
+											<tbody>
+												<tr class="checked-vali">
+													<th scope="row"><span class="SP_th_Title">아이디</span> <span
+														class="SP_required">*</span></th>
+													<td><input type="text" id="user_login_id" value="spring1234" data-checked="false"
+														name="userLoginId"
+														style="max-width: calc(100% - 130px); height: 50px !important; line-height: 50px; width: 100% !important; margin: 0 !important; font-size: 16px; border: 1px solid #bababa;">
+														<button type="button" onclick="info_jungbok( 'user_login_id' , 'idMsg' )"
+															style="padding: 0; width: 120px; text-align: center; height: 50px; line-height: 48px; background: #fff; font-size: 17px; margin-left: 10px; display: inline-block; box-sizing: border-box; border: 1px solid #000; font-weight: normal; text-decoration: none; vertical-align: middle; word-spacing: -0.5px; white-space: nowrap; color: #222;">
+															중복
+															확인</button> <!-- 중복확인 -> 온클릭 함수 --> <span id="idMsg"
+														class="txtOK"></span> <!-- 중복 검사 완료시 뜨는 메시지 error뜨면 해당 상황에 맞게 오류메시지 뜸-->
+
+													</td>
+												</tr>
+
+												<tr class="checked-vali">
+													<th scope="row"><span class="SP_th_Title">비밀번호</span>
+														<span class="SP_required">*</span></th>
+													<td><input type="password" id="passwd" name="userPassword" value="qwer1234!">
+														<div class="pwGuide">(영문 대소문자/숫자/특수문자 중 2가지 이상 조합,
+															8자~16자)</div>
+															<div class="pwGuide2"></div>
+															
+												</tr>
+
+												<tr class="checked-vali">
+													<th scope="row"><span class="SP_th_Title">비밀번호<br>확인
+															<span class="SP_required">*</span>
+													</span></th>
+													<td><input type="password" id="passwd-confirm" value="qwer1234!"
+														name="passwd-confirm"> <span id="pwConfirmMsg"
+														class="">비밀번호가 일치하지 않습니다.</span></td>
+												</tr>
+
+												<tr class="checked-vali">
+													<th scope="row"><span class="SP_th_Title">이름</span> <span
+														class="SP_required">*</span></th>
+													<td><span id="nameContent"> <input type="text" value="일지매"
+															id="name" name="userName">
+													</span></td>
+												</tr>
+
+												<tr class="checked-vali">
+													<th scope="row"><span class="SP_th_Title">이메일</span> <span
+														class="SP_required">*</span></th>
+													<td><input type="text" id="email" name="userEmail" value="asd@naver.com" data-checked="false">
+														<button type="button" onclick="info_jungbok( 'email' , 'emailMsg' )" >중복
+															확인</button> <!-- 중복확인은 온클릭 함수 -->
+														<p id="emailMsg" class="Dupl">사용 가능한 이메일입니다.</p> <!-- 클래스 error 뜨면서 유효성 검사함 -->
+													</td>
+												</tr>
+
+												<tr class="checked-vali">
+													<th scope="row"><span class="SP_th_Title">휴대폰</span> <span
+														class="SP_required">*</span></th>
+													<td><input type="text" id="phone" name="userTel" value="010-4321-4321" data-checked="false">
+														<button type="button" onclick="info_jungbok('phone' , 'phoneMsg' )">휴대폰
+															인증</button> <!-- 폰인증은 온클릭 함수 - 그냥 중복검사 정도하자-->
+														<div class="phoneMsg"></div>
+													</td>
+												</tr>
+
+                                                <tr class="birth">
+                                                    <th scope="row"><span class="SP_th_Title">생년<br>월일
+                                                    </span></th>
+                                                    <td>
+                                                        <input type="text" id="birth-year" name="birth-year" placeholder="년도" maxlength="4" oninput="onlyNumber(this)" max="2024" min="1950" value="2000"> 
+                                                        <input type="text" id="birth-month" name="birth-month" placeholder="월" maxlength="2" oninput="onlyNumber(this)" max="12" min="1" value="11"> 
+                                                        <input type="text" id="birth-day" name="birth-day" placeholder="일" maxlength="2" oninput="onlyNumber(this)"max="31" min="1" value="30">
+                                                    </td>
+                                                </tr>
+
+
+											</tbody>
+
+										</table>
+									</div>
+								</div>
+							</div>
+							<!-- innerJoinWrap -->
+
+						   <div class="SP_joinsubmit_wrap inner_join_wrap">
+								<div class="inner_join">
+									<a class="SP_cm_btn SP_btn_black_bg"
+										onclick="copy_join_btn(event);" style="cursor: pointer">회원
+										가입하기</a>
+								</div>
+							</div> 
+						</div>
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+					</form>
+				</div>
+			</div>
+
+		</div>
+</div>
+</div>
+
+<script type="text/javascript">
+function pwdError() {
+    let pwdAlert = $(".pwGuide");
+    pwdAlert.text("");
+    if (pwdAlert.hasClass("error")) {
+        pwdAlert.text("(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)@")
+    }
+}
+
+function isValidPasswd(passwd) {
+    // 비밀번호 정규 표현식
+    var passwdPattern = /^(?=.*[a-zA-Z])(?=.*\d|[!@#$%^&*()_+={}\[\]:;"'<>,.?/~`-])[A-Za-z\d!@#$%^&*()_+={}\[\]:;"'<>,.?/~`-]{8,16}$/;
+    return passwdPattern.test(passwd);
+}
+
+
+
+function isValidId(id) {
+	const idPattern = /^(?![0-9])(?=[a-z0-9]*$)[a-z][a-z0-9]{3,15}$/;
+	return idPattern.test(id);
+}
+
+function idError() {
+    let idAlert = $("#idMsg");
+    idAlert.text("");
+    if (idAlert.hasClass("error")) {
+        idAlert.text("유효하지 않은 아이디 형식입니다")
+    }
+}
+
+function phoneError() {
+    let phoneAlert = $(".phoneMsg");
+    phoneAlert.text("");
+    if (phoneAlert.hasClass("error")) {
+        phoneAlert.text("(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)@")
+    }
+}
+
+function isValidPhone(phone){
+	//이메일 정규 표현식
+	var phonePattern = /^010-\d{4}-\d{4}/;
+    return phonePattern.test(phone);
+}
+
+
+$(document).on('click', function(event) {
+    //alert('페이지의 아무 곳이나 클릭했습니다!')
+    let passwd = $("#passwd").val();
+    let passwdAlert = $("#passwdMsg");
+    if (!passwd) {
+        passwdAlert.text("비밀");
+        return;
+    }
+
+
+    if (!isValidEmail(email)) {
+        $("#emailMsg").addClass("error")
+    }else {
+        $("#emailMsg").removeClass("error")
+    }
+    emailError();
+
+
+});
+
+
+
+function pwdcError() {
+    let pwdAlert = $("#pwConfirmMsg");
+    pwdAlert.text("");
+    if (pwdAlert.hasClass("error")) {
+        pwdAlert.text("비밀번호가 일치하지 않습니다")
+    }
+}
+
+
+$(document).on('click', function(event) {
+    //alert('페이지의 아무 곳이나 클릭했습니다!')
+    let pwd = $("#passwd").val();
+    let pwdc = $("#passwd-confirm").val();
+    //alert(pwd)
+    if (pwdc!=pwd) {
+        $("#pwConfirmMsg").addClass("error")
+    }else {
+        $("#pwConfirmMsg").removeClass("error")
+    }
+    pwdcError();
+});
+
+
+function isValidEmail(email) {
+    // 이메일 정규 표현식
+    var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailPattern.test(email);
+}
+
+function emailError() {
+    let emailAlert = $("#emailMsg");
+    emailAlert.text("");
+    if (emailAlert.hasClass("error")) {
+        emailAlert.text("유효하지 않은 이메일 형식입니다")
+    }
+}
+
+$(document).on('click', function(event) {
+    //alert('페이지의 아무 곳이나 클릭했습니다!')
+    let email = $("#email").val();
+    let emailAlert = $("#emailMsg");
+    if (!email) {
+        emailAlert.text("이메일을 입력하세요");
+        return;
+    }
+
+
+    if (!isValidEmail(email)) {
+        $("#emailMsg").addClass("error")
+    }else {
+        $("#emailMsg").removeClass("error")
+    }
+    emailError();
+});
+
+// 전체 동의
+
+
+function allAgreeBtn() {
+
+        // 전체 선택 체크박스 상태 확인
+        const selectAllCheckbox = document.getElementById("AgreeAllCk");
+        const checkboxes = document.querySelectorAll(".termCK");
+
+        // 전체 선택 체크박스의 상태에 따라 개별 체크박스 선택/해제
+        checkboxes.forEach((checkbox) => {
+            checkbox.checked = selectAllCheckbox.checked;
+        });
+
+}
+
+function updateSelectAll() {
+    const selectAllCheckbox = document.getElementById("AgreeAllCk");
+    const checkboxes = document.querySelectorAll(".termCK");
+
+    // 개별 체크박스 중 하나라도 체크 해제된 것이 있는지 확인
+    const allChecked = Array.from(checkboxes).every((checkbox) => checkbox.checked);
+
+    // 모든 개별 체크박스가 선택되어 있으면 전체 선택 체크, 아니면 해제
+    selectAllCheckbox.checked = allChecked;
+}
+
+
+//회원가입 서브밋
+
+function copy_join_btn(event) {
+
+	if( $("#email").attr('data-checked')=="false"  ) {
+		alert("이메일 중복체크하세요")
+		return;
+	}
+	if( $("#phone").attr('data-checked')=="false"  ) {
+		alert("전화번호 중복체크하세요")
+		return;
+	}
+	if( $("#user_login_id").attr('data-checked')=="false"  ) {
+		alert("아이디 중복체크하세요")
+		return;
+	}
+	let email = $("#email").val();
+    let emailAlert = $("#emailMsg");
+    if (!email) {
+        emailAlert.text("이메일을 입력하세요");
+        return;
+    }
+
+    if (!isValidEmail(email)) {
+        $("#emailMsg").addClass("error")
+    }else {
+        $("#emailMsg").removeClass("error")
+    }
+    emailError();
+	
+	let pwd = $("#passwd").val();
+    let pwdc = $("#passwd-confirm").val();
+	let pwdcMsg = $("#pwConfirmMsg");
+    //alert(pwd)
+    if (pwdc!=pwd) {
+        $("#pwConfirmMsg").addClass("error");
+		
+		
+    }else {
+        $("#pwConfirmMsg").removeClass("error");
+    }
+    pwdcError();
+	
+	
+	let phone = $("#phone").val();
+	let phoneMsg = $(".phoneMsg");
+	
+	
+	 if (!isValidPhone(phone)) {
+        $("#phoneMsg").addClass("error")
+    }else {
+        $("#phoneMsg").removeClass("error")
+    }
+	
+
+	let termO = $("#termCk").is(':checked');
+	let privacyO = $("#privacyCk").is(':checked');
+	let consignO = $("#consignCk").is(':checked');
+	let ageO = $("#ageCk").is(':checked');
+		//회원가입 필수 입력창 체크
+	let userIdO= $("#user_login_id").val();
+	let userpwO= $("#passwd").val();
+	let userpwcO= $("#passwd-confirm").val();
+	let userNameO= $("#name").val();
+	let userEmailO= $("#email").val();
+	let userPhoneO= $("#phone").val();
+	let userbirthyO= $("#birth-year").val();
+	let userbirthmO= $("#birth-month").val();
+	let userbirthdO= $("#birth-day").val();
+
+	
+/*	 if (!isValidId(userIdO)) {
+        $("#phoneMsg").addClass("error")
+    }else {
+        $("#phoneMsg").removeClass("error")
+    }*/
+
+
+
+//alert(userNameO)
+//alert(userbirthdO)
+	
+	if( termO && privacyO && consignO&&ageO ) {
+		
+		//alert("필수 체크 완료");
+		} else {alert("필수 약관 동의가 필요합니다.") 
+						return; }
+		
+	if(userIdO&&userpwO&&userpwcO&&userNameO&&userEmailO&&userPhoneO) {//필수항목 입력 체크
+		//	alert("필수 입력 완료")	
+		} else {alert("필수 항목을 입력하세요") 
+					return;}
+		
+	if( userbirthyO >= 1950 && userbirthmO>=1 && userbirthmO<=12 &&  userbirthdO>=1 && userbirthdO<=31 ) {
+		//alert("생일 입력 완료")	
+	} else {alert("유효한 생일 형식이 아닙니다") 
+				return;}
+			
+	if (emailAlert.hasClass("error")  || pwdcMsg.hasClass("error") || phoneMsg.hasClass("error")){
+					alert("이메일 혹은 비밀번호 확인을 수정하세요")
+					return;
+				}else {
+			
+					alert("가입완료!")
+					$("#joinForm").submit();
+					}
+}
+
+
+
+
+//중복 메시지 띄우는 함수들..
+function idMsg() {
+	
+	let idAlert = $("#idMsg");
+    idAlert.removeClass("error")
+	idAlert.addClass("error")
+    if (idAlert.hasClass("error")) {
+        idAlert.text("중복 아이디가 존재합니다")
+		//alert("중복아디")
+    }
+}
+
+function emailMsg() {
+	
+	let emAlert = $("#emailMsg");
+    emAlert.text("");
+	emAlert.removeClass("error")
+	emAlert.addClass("error")
+    if (emAlert.hasClass("error")) {
+        emAlert.text("중복 이메일이 존재합니다")
+    }
+}
+
+function phoneMsg() {
+	
+	let idAlert = $(".phoneMsg");
+    idAlert.text("");
+	idAlert.removeClass("error")
+	idAlert.addClass("error")
+    if (idAlert.hasClass("error")) {
+        idAlert.text("중복 전화번호가 존재합니다")
+    }
+}
+
+
+
+
+
+
+$('#passwd').on('focus', function() {
+        $('.pwGuide2').text("");
+    });
+
+
+$('#phone').on('focus', function() {
+        $('.phoneMsg').text("");
+    });
+
+
+// 중복 체크
+
+function info_jungbok( id, msg ) {
+		//$("#pwGuide").removeClass("error");
+
+
+		let value = document.getElementById(id).value; 
+		let phonevalue = $("#phone").val();
+		let idvalue = $("#user_login_id").val();
+		let passwd = $("#passwd").val();
+			//폰도 있어야댐
+		//alert(pwvalue)
+		//alert(isValidPasswd(pwvalue))
+if(isValidId(idvalue)) {
+		
+		if(isValidPasswd(passwd)){
+				
+	
+			if(isValidPhone(phonevalue)  ) {
+				$(".phoneMsg").removeClass("error")
+	
+				let value = document.getElementById(id).value;
+				//alert( value )
+				
+				let msgTag = msg;
+				//alert( msgTag )
+			     
+				 $.ajax({
+					 url:"/ajax/jungbokCK.ajax" , 
+					 dataType:"json",
+					 type:"GET",
+					 data: { msgTag : msgTag , val : value },
+					 cache:false ,
+					
+				     // XMLHttpRequest == jqXHR
+	                // textSatus
+					 success: function ( data,  textStatus, jqXHR ){
+						 // { "result":"true" }			
+						if ( data > 0 && msgTag=="idMsg" ) {
+							//alert( data.result );	
+							//$("#idMsg").addClass("Dupl")
+							idMsg();
+						} else if( data == 0 && msgTag=="idMsg" ) {
+							//중복 아닐떄
+							$("#user_login_id").attr('data-checked', true)
+							$("#idMsg").text("사용 가능한 아이디입니다.")
+						}
+						
+						 else if( data > 0 && msgTag=="emailMsg" ){
+							//$("#emailMsg").addClass("Dupl")
+							emailMsg();
+							//alert( data.result );	
+						} 
+						 else if( data == 0 && msgTag=="emailMsg" ){
+							//중복 아닐떄
+							$("#email").attr('data-checked', true)
+							$("#emailMsg").text("사용 가능한 이메일입니다")
+						} 
+						
+						
+						else if( data > 0 && msgTag=="phoneMsg" ){
+							//$(".phoneMsg").addClass("Dupl")
+							phoneMsg();
+							//alert( data.result );	
+						}
+						 else if( data == 0 && msgTag=="phoneMsg" ){
+							$("#phone").attr("data-checked", true)
+							$(".phoneMsg").text("사용 가능한 번호입니다.")
+						} 
+						 
+					 },
+					 error:function (){
+						 alert("에러~~~ ");
+					 }
+					 
+				 });
+				
+				}else {
+				//alert("폰번호 형식 어긋남 ")
+				$(".phoneMsg").text("전화번호 형식을 확인하세요. -로 구분해야합니다.").css("color", "red");
+				}
+				
+			}else {
+				$(".pwGuide2").text("비밀번호 형식을 확인하세요").css("color" ,"red");
+			}
+		
+		} else {
+			$("#idMsg").text("아이디는 영문소문자 또는 숫자 4~16자로 입력해주세요").css("color" ,"red");
+		}
+		
+		
+	}
+		
+		
+//info_ jungbok
+
+
+//확인받아놓고 장난질 하는거 막기
+$('#user_login_id').on('input', function() {
+        $('#user_login_id').attr('data-checked', 'false');
+    });
+
+$('#email').on('input', function() {
+        $('#email').attr('data-checked', 'false');
+    });
+
+
+$('#phone').on('input', function() {
+        $('#phone').attr('data-checked', 'false');
+    });
+</script>

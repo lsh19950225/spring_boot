@@ -29,4 +29,12 @@
 
 5. 질문 등록 폼 -> QuestionForm.java == DTO
 
--- 내일 : 답변 등록
+-- 답변 등록 기능에 폼 적용하기
+
+-- th:object="${answerForm}"
+
+create.html, detail.html 즉 모든 입력 폼에서 공통으로 사용하는 템플릿
+[공통 템플릿] form_errors.html
+		<div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
+            <div th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+        </div>

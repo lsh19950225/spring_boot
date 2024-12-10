@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Noto+Sans+KR:300,400,500,700&display=swap");
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: white;
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.navigation ul {
+  display: flex;
+  list-style: none;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation li {
+  margin-left: 20px;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+}
+
+.navigation a:hover {
+  text-decoration: underline;
+}
+
+.auth a {
+  color: black;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.auth a:hover {
+  text-decoration: underline;
+}
+
+.auth-links {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.auth-links a {
+  color: black;
+  text-decoration: none;
+}
+
+.auth-links span {
+  margin: 0 10px;
+  color: black;
+}
