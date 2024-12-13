@@ -1,0 +1,14 @@
+[수업내용정리]
+[스프링 부트 프로젝트 생성]
+ㄴ 폴더 생성
+ㄴ sb04_oracle_mybatis_jsp 프로젝트명 수정
+ㄴ mybatis 설정하기
+
+* 외부에서 쓰는 라이브러리는 버전을 쓰는게 좋다. / 내부는 안쓰는게 좋다.
+contextPath : 기본으로 "/"
+쿼리 언어 : JPQL(Java Persistence Query Language)을 통해 객체를 기준으로 데이터베이스와 상호 작용
+
+부서정보 출력 예제
+1) ~.controller.DeptController.java
+2) ~.service.DeptService.java 인터페이스
+3) ~.service.DeptServiceImpl.java 클래스

@@ -1,0 +1,18 @@
+[수업내용정리]
+[스프링 부트 프로젝트 생성]
+ㄴ 폴더 생성
+ㄴ sb05_oracle_mybatis_thymeleaf 프로젝트명 수정
+ㄴ mybatis 설정하기
+
+* 외부에서 쓰는 라이브러리는 버전을 쓰는게 좋다. / 내부는 안쓰는게 좋다.
+contextPath : 기본으로 "/"
+쿼리 언어 : JPQL(Java Persistence Query Language)을 통해 객체를 기준으로 데이터베이스와 상호 작용
+
+mybatis + oracle + thymeleaf 연동 예제
+
+html 파일 - 동적 페이지 <= 자바코딩 + [정적 페이지]
+
+정적 페이지 : static 폴더에 넣는다.
+templates 페이지 : templates 폴더에 넣는다.
+
+https://www.thymeleaf.org/ : 즐겨찾기

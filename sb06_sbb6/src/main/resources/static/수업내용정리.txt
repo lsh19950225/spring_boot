@@ -1,0 +1,50 @@
+[수업내용정리]
+
+1. 질문, 답변 수정과 삭제 기능 추가하기
+	엔티티 - 수정날짜
+
+2. 질문상세보기 : 수정 버튼 추가
+	detail.html -> 수정 버튼
+	질컨
+	create.html -> 수정 코딩
+	
+	컨, 서 코딩 수정
+	
+3. 질문 삭제
+	detail.html -> 삭제 버튼
+스크립트 코딩 조각
+[
+<script type='text/javascript'>
+const delete_elements = document.getElementsByClassName("delete");
+Array.from(delete_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+</script>
+]
+layout.html
+	스크립트 코딩 조각
+	
+	질문삭제 컨트롤러
+	질문삭제 서비스
+
+-- 질문 수정/삭제 작업
+
+-- 답변 수정/삭제 작업
+
+수정 일자 출력
+
+(목)
+좋아요/추천 기능 구현
+앵커 기능
+마크다운 적용
+검색 기능
+
+(금)
+Querydsl
+
+(월)
+spring boot 총 정리

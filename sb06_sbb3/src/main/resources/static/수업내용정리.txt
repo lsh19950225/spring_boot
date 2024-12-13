@@ -1,0 +1,40 @@
+[수업내용정리]
+
+12. 페이징 모듈화
+	만약 : html 문서 구조의 body 요소를 제외한 모든 부분이 동일해서 중복
+	타임리프에서는 이런 중복을 제거하기 위해서 "템플릿 상속" 기능을 제공한다.
+		ㄴ 1) 기본 틀이 되는 템플릿을 먼저 작성
+		ㄴ 2) 그 작성된 템플릿을 상속해서 html 구조 완성
+
+1. html 구조 변경
+	1) 템플릿 상속
+		ㄱ. 기본 틀 : layout.html
+		ㄴ. 				ㄴ 상속 : detail.html
+							 			list.html
+	2) 
+		<html layout:decorate="">
+		타임리프의 layout:decorate="" 속성은
+		템플릿의 레이아웃(부모템플릿, layout.html)으로
+		사용할 템플릿을 설정한다.
+
+2. 질문 등록
+	list.html
+	a 링크 추가 : <a th:href="@{/question/create}" class="btn btn-primary">질문 등록</a>
+
+3. /question/create 요청 -> 컨트롤러 메서드 추가
+
+4. Spring Boot Validation(유효성 검사)
+	1) 유효성 검사 라이브러리 설치
+	2) 참고 사이트 : https://beanvalidation.org/
+
+5. 질문 등록 폼 -> QuestionForm.java == DTO
+
+-- 답변 등록 기능에 폼 적용하기
+
+-- th:object="${answerForm}"
+
+create.html, detail.html 즉 모든 입력 폼에서 공통으로 사용하는 템플릿
+[공통 템플릿] form_errors.html
+		<div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
+            <div th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+        </div>

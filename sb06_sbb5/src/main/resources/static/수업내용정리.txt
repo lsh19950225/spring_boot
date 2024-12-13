@@ -1,0 +1,63 @@
+[수업내용정리]
+
+1. 스프링 시큐리티
+    // 스프링 시큐리티 모듈 추가
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    // 타임리프 템플릿 엔진과 스프링 시큐리티 프레임워크를 함께 사용할 때 필요한 타임리프의 확장 기능 모듈 추가
+    // 타임리프 템플릿 엔진 + 스프링 시큐리티 + 확장 모듈 : 타임리프에서 스프링 시큐리티를 사용하기 위함
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+
+2) 스프링 시큐리티 설정
+	security.SecurityConfig.java == 레거시 : security_context.xml
+
+2. h2-콘솔
+	403 접근 권한 없음 오류 발생
+	이유 ? 스프링 시큐리티 CSRF 처리
+	.csrf((csrf) -> csrf
+                .ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")))
+    -> 화면은 깨진다. (로그인 성공)
+    이유 ? 클릭재킹 공격을 막기 위해서 보안 : 스프링 부트에서는 X-Frame-Options 헤더를 사용
+    .headers((headers) -> headers
+                .addHeaderWriter(new XFrameOptionsHeaderWriter(
+                    XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)))
+	
+* 자동으로 CSRF 가 폼태그 안에 들어간다.
+ex) <form action="/question/create" method="post"><input type="hidden" name="_csrf" value="29eRADhUMted47FxHlJwvFXczyY6yN6_zF246KsmmVBKO5Ju6-WhMg9jAOaw04IQJn9Eimbr4h8I_--S-zmAip5DrDYvDKJe"/>
+
+3. 회원 가입 기능 구현
+	[ 회원(SiteUser) 엔티티 ]
+	username 회원이름/id
+	password
+	email
+	- user 패키지
+
+3-2. UserRepository 인터페이스 추가
+		UserService 추가
+		
+		회원가입 페이지 작성 -> ㄱ. UserCreateForm.java -> ㄴ. UserController
+
+4. 네비게이션 바 - 로그인/회원가입 링크 추가
+
+5. 등록된 ID, Email -> 회원가입 UK 제약에 걸린다.
+	PK
+	UK
+	제약조건 위배
+	에러 메세지를 출력하고 다시 회원가입 페이지로 이동
+
+6. 로그인과 로그아웃 기능 구현
+7. 사용자 정의 인증 처리 방식
+	UserSecurityService == CustomUserDetailsService
+
+8. 질문/답변 - 작성자 처리
+	1) question 엔티티
+		answer 엔티티
+		@ManyToOne
+		private SiteUser author;
+		
+		테이블 AUTHOR_ID 컬럼 == 작성자 ID SiteUser PK
+	
+	2) 답변 컨트롤러, 서비스 수정 - 작성자 처리
+	3) 질문 컨트롤러, 서비스 수정 - 작성자 처리
+	
+	현재 상태는 로그인 하지 않고 질문/답변 작성하면 (작성자 x) : 500 서버 오류가 발생한다.
+	
